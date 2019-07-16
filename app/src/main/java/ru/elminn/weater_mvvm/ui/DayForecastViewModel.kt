@@ -6,9 +6,8 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.internal.operators.flowable.FlowableBlockingSubscribe.subscribe
 import io.reactivex.schedulers.Schedulers
-import ru.elminn.weater_mvvm.data.repository.MvpRepositoryProvider
+import ru.elminn.weater_mvvm.data.repository.RepositoryProvider
 
 class DayForecastViewModel : ViewModel() {
 
@@ -41,7 +40,7 @@ override fun onCleared() {
 
     private fun fetchCityWeather(city: String) {
         compositeDisposable.add(
-            MvpRepositoryProvider.get()
+            RepositoryProvider.get()
                 .provideNewsFeedRepository()
                 .getDayForecast(city)
                 .flatMap { dayForecastResponse -> Single.just(dayForecastResponse.getDayForecastInfo().getDayTempInfo()) }

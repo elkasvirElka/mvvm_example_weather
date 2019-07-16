@@ -5,23 +5,23 @@ import androidx.annotation.Nullable;
 import ru.elminn.weater_mvvm.data.network.ApiFactory;
 import ru.elminn.weater_mvvm.data.network.clients.RxWeatherClient;
 import ru.elminn.weater_mvvm.data.repository.weather.MvpWeatherRepository;
-import ru.elminn.weater_mvvm.data.repository.weather.MvpWeatherRepositoryImpl;
+import ru.elminn.weater_mvvm.data.repository.weather.WeatherRepositoryImpl;
 
-public class MvpRepositoryProvider {
+public class RepositoryProvider {
 
-    private static volatile MvpRepositoryProvider sInstance;
+    private static volatile RepositoryProvider sInstance;
 
     @Nullable
     private MvpWeatherRepository mvpWeatherRepository;
 
-    private MvpRepositoryProvider() {
+    private RepositoryProvider() {
     }
 
-    public static MvpRepositoryProvider get() {
+    public static RepositoryProvider get() {
         if (sInstance == null) {
-            synchronized (MvpRepositoryProvider.class) {
+            synchronized (RepositoryProvider.class) {
                 if (sInstance == null) {
-                    sInstance = new MvpRepositoryProvider();
+                    sInstance = new RepositoryProvider();
                 }
             }
         }
@@ -36,7 +36,7 @@ public class MvpRepositoryProvider {
     @NonNull
     public MvpWeatherRepository provideNewsFeedRepository() {
         if (mvpWeatherRepository == null) {
-            mvpWeatherRepository = new MvpWeatherRepositoryImpl(getServiceInstance(RxWeatherClient.class));
+            mvpWeatherRepository = new WeatherRepositoryImpl(getServiceInstance(RxWeatherClient.class));
         }
         return mvpWeatherRepository;
     }

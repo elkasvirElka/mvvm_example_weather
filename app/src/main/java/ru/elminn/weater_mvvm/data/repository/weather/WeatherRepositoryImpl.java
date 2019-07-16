@@ -5,12 +5,12 @@ import io.reactivex.Single;
 import ru.elminn.weater_mvvm.data.models.DayForecastResponse;
 import ru.elminn.weater_mvvm.data.network.clients.RxWeatherClient;
 
-public class MvpWeatherRepositoryImpl implements MvpWeatherRepository {
+public class WeatherRepositoryImpl implements MvpWeatherRepository {
 
     @NonNull
     private final RxWeatherClient client;
 
-    public MvpWeatherRepositoryImpl(@NonNull RxWeatherClient client) {
+    public WeatherRepositoryImpl(@NonNull RxWeatherClient client) {
         this.client = client;
     }
 
