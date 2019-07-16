@@ -8,8 +8,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import ru.elminn.weater_mvvm.data.repository.RepositoryProvider
+import ru.elminn.weater_mvvm.data.repository.weather.WeatherRepository
+import javax.inject.Inject
 
-class DayForecastViewModel : ViewModel() {
+class DayForecastViewModel @Inject constructor(
+    private val weatherRepository: WeatherRepository )
+: ViewModel() {
 
     companion object {
         private const val DEFAULT_CITY = "Kazan"
@@ -40,8 +44,9 @@ override fun onCleared() {
 
     private fun fetchCityWeather(city: String) {
         compositeDisposable.add(
-            RepositoryProvider.get()
-                .provideNewsFeedRepository()
+         /*   RepositoryProvider.get()
+                .provideNewsFeedRepository()*/
+            weatherRepository
                 .getDayForecast(city)
                 .flatMap { dayForecastResponse -> Single.just(dayForecastResponse.getDayForecastInfo().getDayTempInfo()) }
                 .map { it -> fromKelvinToCelsius(it) }

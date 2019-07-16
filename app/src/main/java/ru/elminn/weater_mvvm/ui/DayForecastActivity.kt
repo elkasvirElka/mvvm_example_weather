@@ -9,21 +9,28 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.ac_day_forecast.*
+import ru.elminn.weater_mvvm.MyApplication
 import ru.elminn.weater_mvvm.R
+import javax.inject.Inject
+
+
 
 class DayForecastActivity : AppCompatActivity(){
 
     private lateinit var dayInfoView: TextView
     private lateinit var progressBar: ProgressBar
-    private lateinit var mViewModel: DayForecastViewModel
+    @Inject
+    lateinit var mViewModel: DayForecastViewModel
+    //lateinit var viewModel: DayForecastViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.ac_day_forecast)
+
+        MyApplication.getApp(this).getAppComponent().createMainComponent().injectDayForecastActivity(this)
         dayInfoView = findViewById(R.id.tvDayForecast)
         progressBar = findViewById(R.id.progressBar)
-        mViewModel = ViewModelProviders.of(this).get(DayForecastViewModel::class.java)
+        //mViewModel = ViewModelProviders.of(this).get(DayForecastViewModel::class.java)
       //  mViewModel.onRefreshWeatherClick()
 
         findViewById<View>(R.id.btnLoadWithRxJava)

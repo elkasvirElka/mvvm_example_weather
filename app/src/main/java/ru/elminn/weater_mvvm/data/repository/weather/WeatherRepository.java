@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import io.reactivex.Single;
 import ru.elminn.weater_mvvm.data.models.DayForecastResponse;
 
-public interface MvpWeatherRepository {
+public interface WeatherRepository {
 
     Single<DayForecastResponse> getDayForecast(@NonNull String city);
 

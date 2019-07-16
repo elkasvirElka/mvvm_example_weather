@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import ru.elminn.weater_mvvm.data.network.ApiFactory;
 import ru.elminn.weater_mvvm.data.network.clients.RxWeatherClient;
-import ru.elminn.weater_mvvm.data.repository.weather.MvpWeatherRepository;
+import ru.elminn.weater_mvvm.data.repository.weather.WeatherRepository;
 import ru.elminn.weater_mvvm.data.repository.weather.WeatherRepositoryImpl;
 
 public class RepositoryProvider {
@@ -12,7 +12,7 @@ public class RepositoryProvider {
     private static volatile RepositoryProvider sInstance;
 
     @Nullable
-    private MvpWeatherRepository mvpWeatherRepository;
+    private WeatherRepository weatherRepository;
 
     private RepositoryProvider() {
     }
@@ -34,10 +34,10 @@ public class RepositoryProvider {
     }
 
     @NonNull
-    public MvpWeatherRepository provideNewsFeedRepository() {
-        if (mvpWeatherRepository == null) {
-            mvpWeatherRepository = new WeatherRepositoryImpl(getServiceInstance(RxWeatherClient.class));
+    public WeatherRepository provideNewsFeedRepository() {
+        if (weatherRepository == null) {
+            weatherRepository = new WeatherRepositoryImpl(getServiceInstance(RxWeatherClient.class));
         }
-        return mvpWeatherRepository;
+        return weatherRepository;
     }
 }
