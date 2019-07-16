@@ -3,15 +3,12 @@ package ru.elminn.weater_mvvm.di.module
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
-import dagger.MapKey
 import dagger.Module
-import dagger.Provides
 import dagger.multibindings.IntoMap
-import ru.elminn.weater_mvvm.data.repository.weather.WeatherRepository
 import ru.elminn.weater_mvvm.di.ViewModelKey
 import ru.elminn.weater_mvvm.ui.DayForecastViewModel
+import ru.elminn.weater_mvvm.utils.ViewModelFactory
 import javax.inject.Singleton
-import kotlin.reflect.KClass
 
 @Module
 abstract class ViewModelModule{
@@ -23,6 +20,8 @@ abstract class ViewModelModule{
     @Binds
     @IntoMap
     @ViewModelKey(DayForecastViewModel::class)
-    //fun provideMainActivityViewModel(): DayForecastViewModel = DayForecastViewModel()
-    abstract fun provideMainActivityViewModel(viewModel: DayForecastViewModel): ViewModel
+    abstract fun provideDayForecastViewModel(viewModel: DayForecastViewModel): ViewModel
+
+    //ViewModel without param
+    //fun provideDayForecastViewModel(): DayForecastViewModel = DayForecastViewModel()
 }

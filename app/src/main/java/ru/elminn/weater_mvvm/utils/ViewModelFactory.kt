@@ -1,4 +1,4 @@
-package ru.elminn.weater_mvvm.di.module
+package ru.elminn.weater_mvvm.utils
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
