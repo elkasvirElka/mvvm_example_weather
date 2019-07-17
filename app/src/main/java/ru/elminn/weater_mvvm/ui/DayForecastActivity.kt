@@ -2,9 +2,7 @@ package ru.elminn.weater_mvvm.ui
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -14,8 +12,7 @@ import ru.elminn.weater_mvvm.R
 import javax.inject.Inject
 
 
-
-class DayForecastActivity : AppCompatActivity(){
+class DayForecastActivity : AppCompatActivity() {
 
     private lateinit var dayInfoView: TextView
     private lateinit var progressBar: ProgressBar
@@ -30,8 +27,15 @@ class DayForecastActivity : AppCompatActivity(){
         MyApplication.getApp(this).getAppComponent().createMainComponent().injectDayForecastActivity(this)
         dayInfoView = findViewById(R.id.tvDayForecast)
         progressBar = findViewById(R.id.progressBar)
+        var editText = findViewById<EditText>(R.id.testEditView)
+        findViewById<Button>(R.id.inputString).setOnClickListener {
+            editText.setText("Lalala")
+        }
+        editText.setOnClickListener {
+            //editText.setText("Lalala")
+        }
         //mViewModel = ViewModelProviders.of(this).get(DayForecastViewModel::class.java)
-      //  mViewModel.onRefreshWeatherClick()
+        //  mViewModel.onRefreshWeatherClick()
 
         findViewById<View>(R.id.btnLoadWithRxJava)
             .setOnClickListener { mViewModel.action(DayForecastAction.FetchForecast) }

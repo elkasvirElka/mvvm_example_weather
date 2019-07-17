@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="16dp" android:orientation="vertical">
 
     <TextView
         android:id="@+id/tvDayForecast"
@@ -22,7 +22,18 @@
         android:max="100"
         android:visibility="gone" />
 
+    <EditText
+            android:id="@+id/testEditView"
+            android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/app_name" />
 
+    <Button
+            android:id="@+id/inputString"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100px"
+            android:text="@string/changeText" />
     <Button
         android:id="@+id/btnLoadWithRxJava"
         android:layout_width="match_parent"
@@ -30,4 +41,4 @@
         android:layout_gravity="bottom"
         android:text="@string/refresh" />
 
-</FrameLayout>
+</LinearLayout>

@@ -2,5 +2,6 @@
     <string name="app_name">weater_mvvm</string>
 
     <string name="refresh">Refresh</string>
+    <string name="changeText">Изменить текст</string>
     <string name="temp_celsius_pattern">%.2f °C</string>
 </resources>
