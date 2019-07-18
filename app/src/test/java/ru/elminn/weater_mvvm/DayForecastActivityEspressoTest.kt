@@ -1,6 +1,5 @@
 package ru.elminn.weater_mvvm
 
-import android.graphics.Bitmap
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -10,9 +9,8 @@ import androidx.test.runner.AndroidJUnit4
 import org.junit.Rule
 import org.junit.Test
 import org.robolectric.annotation.Config
-import ru.elminn.weater_mvvm.ui.DayForecastActivity
-import android.widget.EditText
 import androidx.test.espresso.matcher.ViewMatchers.*
+import ru.elminn.weater_mvvm.ui.DayForecastActivity
 
 
 @RunWith(
