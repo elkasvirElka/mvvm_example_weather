@@ -1,14 +1,13 @@
-package ru.elminn.weater_mvvm.ui
+package ru.elminn.weater_mvvm.ui.dayforecast
 
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import kotlinx.android.synthetic.main.ac_day_forecast.*
 import ru.elminn.weater_mvvm.MyApplication
 import ru.elminn.weater_mvvm.R
+import ru.elminn.weater_mvvm.framework.source.dayforecast.DatabaseHelper
 import javax.inject.Inject
 
 
@@ -18,6 +17,7 @@ class DayForecastActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     @Inject
     lateinit var mViewModel: DayForecastViewModel
+    var db: DatabaseHelper? = null
     //lateinit var viewModel: DayForecastViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +34,7 @@ class DayForecastActivity : AppCompatActivity() {
         editText.setOnClickListener {
             //editText.setText("Lalala")
         }
+        db = DatabaseHelper(this)
         //mViewModel = ViewModelProviders.of(this).get(DayForecastViewModel::class.java)
         //  mViewModel.onRefreshWeatherClick()
 
@@ -51,6 +52,9 @@ class DayForecastActivity : AppCompatActivity() {
             is DayForecastViewState.Success -> {
                 hideProgressBar()
                 showTemperatureInCelsius(state.temp)
+
+                //db?.insertData(DayForecastInfo(1F, 1F,1))
+                db?.getAllData()
             }
             is DayForecastViewState.Failure -> {
                 hideProgressBar()

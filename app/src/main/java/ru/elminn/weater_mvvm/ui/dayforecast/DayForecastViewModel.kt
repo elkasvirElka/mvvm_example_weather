@@ -1,4 +1,4 @@
-package ru.elminn.weater_mvvm.ui
+package ru.elminn.weater_mvvm.ui.dayforecast
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,7 +7,6 @@ import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import ru.elminn.weater_mvvm.data.repository.RepositoryProvider
 import ru.elminn.weater_mvvm.data.repository.weather.WeatherRepository
 import javax.inject.Inject
 
@@ -24,13 +23,6 @@ class DayForecastViewModel @Inject constructor(
 
     val view : LiveData<DayForecastViewState>
     get() = _viewState
-/*init {
-    this.view = view
-}*/
-  /*  fun DayForecastViewModel(view: DayForecastView) {
-        this.view = view
-    }
-*/
 
     fun action(action: DayForecastAction) {
         when (action) {
@@ -44,12 +36,15 @@ override fun onCleared() {
 
     private fun fetchCityWeather(city: String) {
         compositeDisposable.add(
-         /*   RepositoryProvider.get()
-                .provideNewsFeedRepository()*/
+
             weatherRepository
                 .getDayForecast(city)
-                .flatMap { dayForecastResponse -> Single.just(dayForecastResponse.getDayForecastInfo().getDayTempInfo()) }
-                .map { it -> fromKelvinToCelsius(it) }
+                .flatMap { dayForecastResponse ->
+                    //TODO db = DatabaseHelper(this)
+                    //db?.insertData(dayForecastResponse)
+                    Single.just(dayForecastResponse.getDayForecastInfo().getDayTempInfo()) }
+                .map { it ->
+                    fromKelvinToCelsius(it) }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { _viewState.value = DayForecastViewState.Loading }
@@ -57,7 +52,8 @@ override fun onCleared() {
                 .subscribe (
                     { _viewState.value = DayForecastViewState.Success(it) },
                     {
-                        _viewState.value = DayForecastViewState.Failure(it.message?:"")
+                        _viewState.value =
+                            DayForecastViewState.Failure(it.message ?: "")
                     })
         )
     }
