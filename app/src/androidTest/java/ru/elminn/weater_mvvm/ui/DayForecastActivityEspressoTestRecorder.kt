@@ -18,6 +18,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import ru.elminn.weater_mvvm.R
+import ru.elminn.weater_mvvm.ui.dayforecast.DayForecastActivity
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)

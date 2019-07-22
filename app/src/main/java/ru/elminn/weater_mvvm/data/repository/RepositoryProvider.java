@@ -2,8 +2,8 @@ package ru.elminn.weater_mvvm.data.repository;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import ru.elminn.weater_mvvm.data.network.ApiFactory;
-import ru.elminn.weater_mvvm.data.network.clients.RxWeatherClient;
+import ru.elminn.weater_mvvm.framework.network.ApiFactory;
+import ru.elminn.weater_mvvm.framework.network.clients.RxWeatherClient;
 import ru.elminn.weater_mvvm.data.repository.weather.WeatherRepository;
 import ru.elminn.weater_mvvm.data.repository.weather.WeatherRepositoryImpl;
 

@@ -1,4 +1,4 @@
-package ru.elminn.weater_mvvm.data.network.clients;
+package ru.elminn.weater_mvvm.framework.network.clients;
 
 
 import io.reactivex.Single;

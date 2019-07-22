@@ -6,7 +6,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import ru.elminn.weater_mvvm.di.ViewModelKey
-import ru.elminn.weater_mvvm.ui.DayForecastViewModel
+import ru.elminn.weater_mvvm.ui.dayforecast.DayForecastViewModel
 import ru.elminn.weater_mvvm.utils.ViewModelFactory
 import javax.inject.Singleton
 

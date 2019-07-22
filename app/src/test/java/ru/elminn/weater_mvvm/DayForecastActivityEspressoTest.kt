@@ -10,7 +10,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.robolectric.annotation.Config
 import androidx.test.espresso.matcher.ViewMatchers.*
-import ru.elminn.weater_mvvm.ui.DayForecastActivity
+import ru.elminn.weater_mvvm.ui.dayforecast.DayForecastActivity
 
 
 @RunWith(
@@ -31,6 +31,11 @@ class DayForecastActivityEspressoTest{
 
         onView(withId(R.id.testEditView)).check(matches(withText("Lalala")))
         onView(withId(R.id.testEditView)).check(matches(isDisplayed()))
+        var array = ArrayList<Int>()
+        var sum : Long = 0
+        for(i in array)
+            sum += i
+
         //TODO EditView actions don't work
        /* onView(withId(R.id.testEditView))
             .perform(

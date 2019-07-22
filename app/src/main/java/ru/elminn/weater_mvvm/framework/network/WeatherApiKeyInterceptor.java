@@ -1,4 +1,4 @@
-package ru.elminn.weater_mvvm.data.network;
+package ru.elminn.weater_mvvm.framework.network;
 
 import androidx.annotation.NonNull;
 import okhttp3.HttpUrl;
